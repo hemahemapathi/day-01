@@ -1,0 +1,25 @@
+Difference between HTTP1.1 and HTTP2:
+
+HTTP1.1:
+
+1.Connection Handling : Establishes a new TCP connection for each request, resulting in high overhead due to connection setup and teardown.
+   
+2.Header Compression : Sends headers in plaintext, leading to redundant data transmission for each request and response.
+   
+3.Binary Framing Layer : Processes messages as a sequence of text lines, which can be inefficient for parsing and processing.
+   
+4. Stream Prioritization and Multiplexing : Lacks support for multiplexing multiple requests and responses over a single connection, leading to head-of-line blocking issues.
+   
+5.Flow Control : Lacks built-in flow control mechanisms, making it susceptible to issues like TCP congestion collapse.
+
+HTTP2:
+
+1.Connection Handling : Utilizes a single, multiplexed connection between the client and server, reducing the need for multiple TCP connections and overhead associated with connection management.
+
+2.Header Compression  : Implements header compression using the HPACK algorithm, significantly reducing the size of header data transmitted over the network and improving efficiency.
+
+3.Binary Framing Layer : Introduces a binary framing layer that divides messages into smaller frames, improving parsing efficiency and enabling features like multiplexing and stream prioritization.
+
+4.Stream Prioritization and Multiplexing : Allows for multiplexing, enabling concurrent transmission of multiple requests and responses over a single connection. Additionally, it supports stream prioritization, allowing clients to prioritize critical resources for faster delivery.
+
+5.Flow Control : Implements flow control at the protocol level, enabling more efficient resource allocation and preventing congestion-related performance degradation.
